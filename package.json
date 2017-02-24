@@ -1,0 +1,35 @@
+{
+    "name": "binary-search-tree-js-visualize",
+    "version": "0.1.0",
+    "description": "Implement binary search tree with javascript canvas",
+    "node-main": "./run.js",
+    "license": "MIT",
+    "homepage": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "keywords": [
+      "binary-search-tree",
+      "javascript",
+      "canvas"
+    ],
+    "dependencies": {
+       "bootstrap-material-design": "~0.5.10"
+    },
+    "devDependencies": {
+       "babel": "~6.23.0",
+       "babel-core": "~6.23.1",
+       "babel-loader": "~6.3.2",
+       "css-loader": "~0.26.1",
+       "html-webpack-plugin": "~2.28.0",
+       "style-loader": "~0.13.1",
+       "webpack": "~2.2.1"
+    },
+    "scripts": {
+
+    }
+}
