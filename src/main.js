@@ -1,5 +1,5 @@
 
-import * as polyfill from 'babel/polyfill';
+// import * as polyfill from 'babel/polyfill';
 
 /* Stylesheets */
 import 'bootstrap/dist/css/bootstrap.min.css';
