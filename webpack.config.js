@@ -15,31 +15,37 @@ module.exports = {
    },
    module: {
       loaders: [{
-         test: /\.css$/,
-         loader: 'style-loader!css-loader'
-      }, {
-         test: /\.js?$/,
-         exclude: /(node_modules)/,
-         loaders: ['babel-loader?presets[]=es2015']
-      },{
+            test: /\.css$/,
+            loader: 'style-loader!css-loader'
+         }, {
+            test: /\.js?$/,
+            exclude: /(node_modules)/,
+            loaders: ['babel-loader?presets[]=es2015']
+         },
+         {
+            test: /\.scss$/,
+            loaders: ["style-loader", "css-loader", "sass-loader"]
+         },
+         {
             test: /\.(png|jpg)$/,
             loader: 'file-loader'
-        }, {
+         }, {
             test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
             loader: "url-loader?limit=10000&mimetype=application/font-woff"
-        }, {
+         }, {
             test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
             loader: "url-loader?limit=10000&mimetype=application/font-woff"
-        }, {
+         }, {
             test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
             loader: "url-loader?limit=10000&mimetype=application/octet-stream"
-        }, {
+         }, {
             test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
             loader: "file-loader"
-        }, {
+         }, {
             test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
             loader: "url-loader?limit=10000&mimetype=image/svg+xml"
-        }]
+         }
+      ]
    },
    plugins: [
       new webpack.optimize.UglifyJsPlugin({
