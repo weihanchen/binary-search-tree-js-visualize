@@ -34,7 +34,7 @@
         "webpack-dev-server": "~2.4.1"
     },
     "scripts": {
-        "build": "webpack",
+        "release": "webpack",
         "dev": "webpack-dev-server --inline --devtool eval --progress --colors --hot --content-base build"
     }
 }
