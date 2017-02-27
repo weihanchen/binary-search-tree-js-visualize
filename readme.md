@@ -4,7 +4,7 @@ Data structure of binary search tree implement with html5 canvas.
 
 ## Build Requirements
 
-Nodejs 6.0+
+Nodejs 6.5.0+
 
 ## Stacks
 * [ECMAScript6](http://es6-features.org/)
