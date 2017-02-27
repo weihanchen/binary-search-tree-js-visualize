@@ -6,19 +6,27 @@
     <title></title>
 </head>
 
-<body class="container-fluid">
-    <script type="text/javascript" src="bundle.min.js" charset="utf-8"></script>
+<body class="container bg-white">
     <h1 class="title text-center">Binary search tree visualize</h1>
     <div class="row">
         <div class="col-md-12">
-              <div class="form-group">
-                  <input type="text" class="form-control" id="insert" placeholder="Please input number of integer">
+              <div class="inputs">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="input-text" placeholder="Please input number of integer" />
+                </div>
               </div>
-              <button class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-plus"></span> Insert</button>
+              <button id="insert-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-plus"></span> Insert</button>
               <button class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-search"></span> Search</button>
               <button class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-trash"></span> Delete</button>
               <button class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-erase"></span> Clear Canvas</button>
         </div>
+    </div>
+    <div class="row">
+      <div id="tree-view-container" class="col-md-12">
+        <canvas id="tree-view">
+          <p> Canvas tag not supported </p>
+        </canvas>
+      </div>
     </div>
 </body>
 

@@ -7,7 +7,7 @@ const BUILD_PATH = path.resolve(__dirname, './build');
 const INDEX_TEMPLATE_PATH = path.resolve(__dirname, './src/template/index.html');
 module.exports = {
    entry: {
-      main: ['babel-polyfill', APP_PATH]
+      main: APP_PATH
    },
    output: {
       path: BUILD_PATH,
@@ -20,7 +20,7 @@ module.exports = {
          }, {
             test: /\.js?$/,
             exclude: /(node_modules)/,
-            loaders: ['babel-loader?presets[]=es2015']
+            loaders: ['babel-loader']
          },
          {
             test: /\.scss$/,
@@ -53,6 +53,7 @@ module.exports = {
       }),
       new HtmlWebpackPlugin({
          title: 'binary-search-tree-js-visualize',
+         inject: true,
          template: INDEX_TEMPLATE_PATH,
          minify: {
             collapseWhitespace: true,
@@ -62,6 +63,10 @@ module.exports = {
             removeStyleLinkTypeAttributes: true
          }
       }),
+      new webpack.ProvidePlugin({
+         $: "jquery",
+         jQuery: "jquery"
+      })
    ],
    devtool: 'source-map'
 }

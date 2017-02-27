@@ -7,10 +7,10 @@
     "homepage": "",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/weihanchen/binary-search-tree-js-visualize"
     },
     "bugs": {
-        "url": ""
+        "url": "https://github.com/weihanchen/binary-search-tree-js-visualize/issues"
     },
     "keywords": [
         "binary-search-tree",
