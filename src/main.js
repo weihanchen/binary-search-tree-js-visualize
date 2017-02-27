@@ -24,6 +24,7 @@ const insert = (event) => {
       event.preventDefault();
       const value = parseInt(input.value);
       if (isNaN(value)) throw 'Try to enter integer again.';
+      tree.insert(value);
    } catch (errorMsg) {
       alert(errorMsg);
    }

@@ -3,11 +3,15 @@ class Tree {
      this.root = null;
      this.canvas = canvas;
    }
+
+   insert(value) {
+
+   }
 }
 
 //private methods
 const _insert = (node, value) => {
-
+  
 }
 
 
