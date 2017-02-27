@@ -12,6 +12,7 @@ Nodejs ^6.5.0
 * [Webpack](https://webpack.github.io/)
 * [Material Design for Bootstrap](http://fezvrasta.github.io/bootstrap-material-design/)
 * [Sass](http://sass-lang.com/)
+* [CI with travis and github's gh-pages](https://gist.github.com/domenic/ec8b0fc8ab45f39403dd)
 
 ## Run example with server
 * install packages： `npm install`
