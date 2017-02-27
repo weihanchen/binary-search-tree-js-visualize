@@ -13,7 +13,7 @@ git config --global user.name "${GITHUB_USER}"
 
 #deploy
 git clone -b $TARGET_BRANCH $FULL_REPO $TARGET_FOLDER
-cp -r builds/* $TARGET_FOLDER
+cp -r build/* $TARGET_FOLDER
 cp readme.md  $TARGET_FOLDER
 cd $TARGET_FOLDER
 git add .
