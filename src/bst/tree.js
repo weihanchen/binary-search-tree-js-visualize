@@ -4,9 +4,10 @@ class Tree {
      this.canvas = canvas;
    }
 }
+
 //private methods
 const _insert = (node, value) => {
-    
+
 }
 
 

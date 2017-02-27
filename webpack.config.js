@@ -20,7 +20,7 @@ module.exports = {
          }, {
             test: /\.js?$/,
             exclude: /(node_modules)/,
-            loaders: ['babel-loader']
+            loaders: ['babel-loader?presets[]=es2015']
          },
          {
             test: /\.scss$/,
