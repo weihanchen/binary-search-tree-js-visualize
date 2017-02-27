@@ -5,8 +5,7 @@ import 'bootstrap-material-design/dist/css/ripples.min.css';
 import './stylesheets/style.scss';
 
 /* scripts */
-import Tree from './bst/tree.js';
-import TreeNode from './bst/treeNode.js';
+import Tree from './bst/Tree';
 import 'bootstrap-material-design/dist/js/material.min.js';
 import 'bootstrap-material-design/dist/js/ripples.min.js';
 $.material.init();
@@ -18,6 +17,7 @@ const treeView = document.getElementById('tree-view');
 const treeViewContainer = document.getElementById('tree-view-container');
 const tree = new Tree(treeView);
 
+
 /* methods */
 const insert = (event) => {
    try {
@@ -25,6 +25,7 @@ const insert = (event) => {
       const value = parseInt(input.value);
       if (isNaN(value)) throw 'Try to enter integer again.';
       tree.insert(value);
+      input.value = '';
    } catch (errorMsg) {
       alert(errorMsg);
    }
@@ -32,10 +33,15 @@ const insert = (event) => {
 };
 
 const resize = () => {
-   treeView.width = treeViewContainer.offsetWidth * 0.9;
-   treeView.height = treeViewContainer.offsetHeight * 0.8;
+   treeView.width = treeViewContainer.offsetWidth;
+   treeView.height = treeView.width;
+   tree.draw(treeView);
 };
 
 /* binding */
 insertBtn.addEventListener('click', insert);
+input.addEventListener('keypress', (event) => {if (event.keyCode === 13) insert(event)});
 window.onresize = resize;
+
+/* run methods */
+resize();
