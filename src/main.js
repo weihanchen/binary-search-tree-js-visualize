@@ -5,7 +5,7 @@ import 'bootstrap-material-design/dist/css/ripples.min.css';
 import './stylesheets/style.scss';
 
 /* scripts */
-import Tree from './bst/Tree';
+import Tree from './bst/Tree.js';
 import 'bootstrap-material-design/dist/js/material.min.js';
 import 'bootstrap-material-design/dist/js/ripples.min.js';
 $.material.init();

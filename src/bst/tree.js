@@ -1,4 +1,4 @@
-import TreeNode from './treeNode';
+import TreeNode from './TreeNode.js';
 class Tree {
    constructor(canvas) {
       this._root = null;
