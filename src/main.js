@@ -15,6 +15,7 @@ const clearBtn = document.getElementById('clear-btn');
 const deleteBtn = document.getElementById('delete-btn');
 const input = document.getElementById('input-text');
 const insertBtn = document.getElementById('insert-btn');
+const searchBtn = document.getElementById('search-btn');
 const treeView = document.getElementById('tree-view');
 const treeViewContainer = document.getElementById('tree-view-container');
 const tree = new Tree(treeView);
@@ -38,6 +39,7 @@ const del = (event) => {
    } catch (errorMsg) {
       alert(errorMsg);
       input.value = '';
+      input.focus();
    }
 }
 
@@ -52,6 +54,7 @@ const insert = (event) => {
    } catch (errorMsg) {
       alert(errorMsg);
       input.value = '';
+      input.focus();
    }
 };
 
@@ -61,10 +64,26 @@ const resize = () => {
    tree.draw(treeView);
 };
 
+const search = (event) => {
+   try {
+      event.preventDefault();
+      const value = parseInt(input.value);
+      if (isNaN(value)) throw 'Try to enter integer again.';
+      tree.search(value);
+      input.value = '';
+      input.focus();
+   } catch (errorMsg) {
+      alert(errorMsg);
+      input.value = '';
+      input.focus();
+   }
+}
+
 /* binding */
 clearBtn.addEventListener('click', clear);
 deleteBtn.addEventListener('click', del);
 insertBtn.addEventListener('click', insert);
+searchBtn.addEventListener('click', search);
 input.addEventListener('keypress', (event) => {
    if (event.keyCode === 13) insert(event)
 });

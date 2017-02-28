@@ -6,6 +6,8 @@ Data structure of binary search tree implement with html5 canvas.
 
 Nodejs ^6.5.0
 
+## [Demo](https://weihanchen.github.io/binary-search-tree-js-visualize/)
+
 ## Stacks
 * [ECMAScript6](http://es6-features.org/)
 * [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
@@ -18,3 +20,6 @@ Nodejs ^6.5.0
 * install packages： `npm install`
 * run with development： `npm run dev`
 * release： `npm run release`
+
+## References
+* [Binary_search_tree](https://en.wikipedia.org/wiki/Binary_search_tree)

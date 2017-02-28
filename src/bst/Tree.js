@@ -23,7 +23,7 @@ class Tree {
       this.draw(this._canvas);
    }
 
-   draw(canvas) {
+   draw(canvas, currentValue) {
       canvas.height = canvas.height;
       canvas.width = canvas.width;
       const context = canvas.getContext('2d');
@@ -40,13 +40,17 @@ class Tree {
          ySpace
       } = this._settings;
       if (this._root !== null) {
-         _drawNode(context, startX, startY, radius, sAngle, eAngle, xWidth, 0, ySpace, lightGreen, darkGreen, black, this._root);
+         _drawNode(context, startX, startY, radius, sAngle, eAngle, xWidth, 0, ySpace, lightGreen, darkGreen, black, this._root, currentValue);
       }
    }
 
    insert(value) {
       this._root = _insert(this._root, value);
       this.draw(this._canvas);
+   }
+
+   search(value) {
+     this.draw(this._canvas, value);
    }
 }
 
@@ -85,14 +89,14 @@ const _insert = (node, value) => {
    return node;
 }
 
-const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, depth, ySpace, nodeBackground, borderColor, textColor, node) => {
+const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, depth, ySpace, nodeBackground, borderColor, textColor, node, currentValue) => {
    /* draw node circle */
    context.beginPath();
    context.arc(startX, startY, radius, sAngle, eAngle, false);
    context.fillStyle = nodeBackground;
    context.fill();
    context.lineWidth = 1;
-   context.strokeStyle = borderColor;
+   context.strokeStyle = node.value === currentValue?'red':borderColor;
    context.stroke();
    context.fillStyle = textColor;
    context.font = '12px Arial bold';
@@ -109,7 +113,7 @@ const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, dept
       context.lineWidth = 1;
       context.strokeStyle = borderColor;
       context.stroke();
-      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1, ySpace, nodeBackground, borderColor, textColor, node.left);
+      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1, ySpace, nodeBackground, borderColor, textColor, node.left,currentValue);
    }
    /* draw right branch */
    if (node.right !== null) {
@@ -121,7 +125,7 @@ const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, dept
       context.lineWidth = 1;
       context.strokeStyle = borderColor;
       context.stroke();
-      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1, ySpace, nodeBackground, borderColor, textColor, node.right);
+      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1, ySpace, nodeBackground, borderColor, textColor, node.right,currentValue);
    }
 }
 
