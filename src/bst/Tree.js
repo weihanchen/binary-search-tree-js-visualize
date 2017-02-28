@@ -13,6 +13,16 @@ class Tree {
       }
    }
 
+   clear() {
+      this._root = null;
+      this.draw(this._canvas);
+   }
+
+   del(value) {
+      this._root = _delete(this._root, value);
+      this.draw(this._canvas);
+   }
+
    draw(canvas) {
       canvas.height = canvas.height;
       canvas.width = canvas.width;
@@ -32,12 +42,6 @@ class Tree {
       if (this._root !== null) {
          _drawNode(context, startX, startY, radius, sAngle, eAngle, xWidth, 0, ySpace, lightGreen, darkGreen, black, this._root);
       }
-   }
-
-   del(value) {
-      this._root = _delete(this._root, value);
-      console.log(this._root)
-      this.draw(this._canvas);
    }
 
    insert(value) {

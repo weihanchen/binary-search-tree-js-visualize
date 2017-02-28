@@ -11,6 +11,7 @@ import 'bootstrap-material-design/dist/js/ripples.min.js';
 $.material.init();
 
 /* declare */
+const clearBtn = document.getElementById('clear-btn');
 const deleteBtn = document.getElementById('delete-btn');
 const input = document.getElementById('input-text');
 const insertBtn = document.getElementById('insert-btn');
@@ -20,6 +21,12 @@ const tree = new Tree(treeView);
 
 
 /* methods */
+const clear = (event) => {
+   event.preventDefault();
+   tree.clear();
+   input.focus();
+}
+
 const del = (event) => {
    try {
       event.preventDefault();
@@ -55,6 +62,7 @@ const resize = () => {
 };
 
 /* binding */
+clearBtn.addEventListener('click', clear);
 deleteBtn.addEventListener('click', del);
 insertBtn.addEventListener('click', insert);
 input.addEventListener('keypress', (event) => {
