@@ -1,5 +1,7 @@
 binary-search-tree-js-visualize
 ===
+[![Build Status](https://travis-ci.org/weihanchen/binary-search-tree-js-visualize.svg?branch=master)](https://travis-ci.org/weihanchen/binary-search-tree-js-visualize)
+
 Data structure of binary search tree implement with html5 canvas.
 
 ## Build Requirements
