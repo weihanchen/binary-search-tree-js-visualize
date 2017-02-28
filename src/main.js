@@ -28,6 +28,7 @@ const insert = (event) => {
       input.value = '';
    } catch (errorMsg) {
       alert(errorMsg);
+      input.value = '';
    }
 
 };
@@ -41,6 +42,7 @@ const resize = () => {
 /* binding */
 insertBtn.addEventListener('click', insert);
 input.addEventListener('keypress', (event) => {if (event.keyCode === 13) insert(event)});
+input.focus();
 window.onresize = resize;
 
 /* run methods */
