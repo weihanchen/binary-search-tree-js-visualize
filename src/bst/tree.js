@@ -8,7 +8,8 @@ class Tree {
          eAngle: 2 * Math.PI,
          lightGreen: '#42f4b9',
          darkGreen: '#0d866c',
-         black: '#000'
+         black: '#000',
+         ySpace: 20
       }
    }
 
@@ -17,15 +18,17 @@ class Tree {
       const startX = ~~(canvas.width / 2);
       const startY = ~~(canvas.width / 20);
       const radius = ~~(canvas.width / 40);
+      const xWidth = ~~(canvas.width / 4);
       const {
          sAngle,
          eAngle,
          lightGreen,
          darkGreen,
-         black
+         black,
+         ySpace
       } = this._settings;
       if (this._root !== null) {
-         _drawNode(context, startX, startY, radius, sAngle, eAngle, lightGreen, darkGreen, black, this._root);
+         _drawNode(context, startX, startY, radius, sAngle, eAngle, xWidth, 0,ySpace, lightGreen, darkGreen, black, this._root);
       }
    }
 
@@ -48,7 +51,7 @@ const _insert = (node, value) => {
    return node;
 }
 
-const _drawNode = (context, startX, startY, radius, sAngle, eAngle, nodeBackground, borderColor, textColor, node) => {
+const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, depth, ySpace,nodeBackground, borderColor, textColor, node) => {
    /* draw node circle */
    context.beginPath();
    context.arc(startX, startY, radius, sAngle, eAngle, false);
@@ -60,30 +63,34 @@ const _drawNode = (context, startX, startY, radius, sAngle, eAngle, nodeBackgrou
    context.fillStyle = textColor;
    context.font = '12px Arial bold';
    context.fillText(node.value, startX, startY);
+   const leaves = Math.pow(2, depth);
 
+   const delta_x = ~~(xWidth / 2);
+   console.log(startX);
+   console.log(delta_x)
    /* draw left branch */
    if (node.left !== null) {
-      const nextX = startX - 2 * radius;
-      const nextY = startY + 2 * radius;
+      const nextX = startX - delta_x;
+      const nextY = startY + 2 * radius + ySpace;
       context.beginPath();
       context.moveTo(startX, startY + radius);
       context.lineTo(nextX, nextY);
       context.lineWidth = 1;
       context.strokeStyle = borderColor;
       context.stroke();
-      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, nodeBackground, borderColor, textColor, node.left);
+      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1,ySpace, nodeBackground, borderColor, textColor, node.left);
    }
    /* draw right branch */
    if (node.right !== null) {
-      const nextX = startX + 2 * radius;
-      const nextY = startY + 2 * radius;
+      const nextX = startX + delta_x;
+      const nextY = startY + 2 * radius + ySpace;
       context.beginPath();
       context.moveTo(startX, startY + radius);
       context.lineTo(nextX, nextY);
       context.lineWidth = 1;
       context.strokeStyle = borderColor;
       context.stroke();
-      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, nodeBackground, borderColor, textColor, node.right);
+      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1,ySpace, nodeBackground, borderColor, textColor, node.right);
    }
 }
 
