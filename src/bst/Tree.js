@@ -14,6 +14,8 @@ class Tree {
    }
 
    draw(canvas) {
+      canvas.height = canvas.height;
+      canvas.width = canvas.width;
       const context = canvas.getContext('2d');
       const startX = ~~(canvas.width / 2);
       const startY = ~~(canvas.width / 20);
@@ -28,8 +30,14 @@ class Tree {
          ySpace
       } = this._settings;
       if (this._root !== null) {
-         _drawNode(context, startX, startY, radius, sAngle, eAngle, xWidth, 0,ySpace, lightGreen, darkGreen, black, this._root);
+         _drawNode(context, startX, startY, radius, sAngle, eAngle, xWidth, 0, ySpace, lightGreen, darkGreen, black, this._root);
       }
+   }
+
+   del(value) {
+      this._root = _delete(this._root, value);
+      console.log(this._root)
+      this.draw(this._canvas);
    }
 
    insert(value) {
@@ -39,6 +47,28 @@ class Tree {
 }
 
 //private methods
+const _delete = (node, value) => {
+   if (node === null) return node;
+   else {
+      if (value === node.value) {
+         if (node.left !== null && node.right !== null) {
+            node.left = _detachMaxInLeft(node.left, node);
+         } else node = (node.left === null) ? node.right : node.left;
+      } else if (value > node.value) node.right = _delete(node.right, value);
+      else if (value < node.value) node.left = _delete(node.left, value);
+   }
+   return node;
+}
+
+const _detachMaxInLeft = (node, rootNode) =>{ //find left branch's max and detatch it.
+   if (node.right != null) node.right = _detachMaxInLeft(node.right, rootNode);
+   else {
+      rootNode.value = node.value;
+      node = node.left;
+   }
+   return node;
+}
+
 const _insert = (node, value) => {
    if (node === null) node = new TreeNode(value);
    else {
@@ -51,7 +81,7 @@ const _insert = (node, value) => {
    return node;
 }
 
-const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, depth, ySpace,nodeBackground, borderColor, textColor, node) => {
+const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, depth, ySpace, nodeBackground, borderColor, textColor, node) => {
    /* draw node circle */
    context.beginPath();
    context.arc(startX, startY, radius, sAngle, eAngle, false);
@@ -64,10 +94,7 @@ const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, dept
    context.font = '12px Arial bold';
    context.fillText(node.value, startX, startY);
    const leaves = Math.pow(2, depth);
-
    const delta_x = ~~(xWidth / 2);
-   console.log(startX);
-   console.log(delta_x)
    /* draw left branch */
    if (node.left !== null) {
       const nextX = startX - delta_x;
@@ -78,7 +105,7 @@ const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, dept
       context.lineWidth = 1;
       context.strokeStyle = borderColor;
       context.stroke();
-      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1,ySpace, nodeBackground, borderColor, textColor, node.left);
+      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1, ySpace, nodeBackground, borderColor, textColor, node.left);
    }
    /* draw right branch */
    if (node.right !== null) {
@@ -90,7 +117,7 @@ const _drawNode = (context, startX, startY, radius, sAngle, eAngle, xWidth, dept
       context.lineWidth = 1;
       context.strokeStyle = borderColor;
       context.stroke();
-      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1,ySpace, nodeBackground, borderColor, textColor, node.right);
+      _drawNode(context, nextX, nextY, radius, sAngle, eAngle, delta_x, depth + 1, ySpace, nodeBackground, borderColor, textColor, node.right);
    }
 }
 

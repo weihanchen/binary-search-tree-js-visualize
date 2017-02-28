@@ -11,6 +11,7 @@ import 'bootstrap-material-design/dist/js/ripples.min.js';
 $.material.init();
 
 /* declare */
+const deleteBtn = document.getElementById('delete-btn');
 const input = document.getElementById('input-text');
 const insertBtn = document.getElementById('insert-btn');
 const treeView = document.getElementById('tree-view');
@@ -19,6 +20,20 @@ const tree = new Tree(treeView);
 
 
 /* methods */
+const del = (event) => {
+   try {
+      event.preventDefault();
+      const value = parseInt(input.value);
+      if (isNaN(value)) throw 'Try to enter integer again.';
+      tree.del(value);
+      input.value = '';
+      input.focus();
+   } catch (errorMsg) {
+      alert(errorMsg);
+      input.value = '';
+   }
+}
+
 const insert = (event) => {
    try {
       event.preventDefault();
@@ -26,11 +41,11 @@ const insert = (event) => {
       if (isNaN(value)) throw 'Try to enter integer again.';
       tree.insert(value);
       input.value = '';
+      input.focus();
    } catch (errorMsg) {
       alert(errorMsg);
       input.value = '';
    }
-
 };
 
 const resize = () => {
@@ -40,8 +55,11 @@ const resize = () => {
 };
 
 /* binding */
+deleteBtn.addEventListener('click', del);
 insertBtn.addEventListener('click', insert);
-input.addEventListener('keypress', (event) => {if (event.keyCode === 13) insert(event)});
+input.addEventListener('keypress', (event) => {
+   if (event.keyCode === 13) insert(event)
+});
 input.focus();
 window.onresize = resize;
 
