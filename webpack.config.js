@@ -72,11 +72,12 @@ module.exports = {
       new SWPrecacheWebpackPlugin({
          cacheId: pkg.name,
          filename: 'sw.js',
-         filepath: path.resolve(BUILD_PATH, 'sw.js'),
          maximumFileSizeToCacheInBytes: 4194304,
-         minify: true,
+         stripPrefixMulti: {
+               './build': '.'
+         },
          staticFileGlobs: [
-            './'
+            './build/*'
          ]
       })
    ],
