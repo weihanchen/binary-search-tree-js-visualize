@@ -2,32 +2,39 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title></title>
+   <meta charset="utf-8">
+   <title></title>
 </head>
 
 <body class="container-fluid bg-white">
-    <h1 class="title text-center">Binary search tree visualize</h1>
-    <div class="row">
-        <div class="col-md-12">
-              <div class="inputs">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="input-text" placeholder="Please input number of integer" />
-                </div>
-              </div>
-              <button id="insert-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-plus"></span> Insert</button>
-              <button id="search-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-search"></span> Search</button>
-              <button id="delete-btn" class="btn btn-primary btn-raised" title="Delete the node, then detach the max value of left childs"><span class="glyphicon glyphicon-trash"></span> Delete</button>
-              <button id="clear-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-erase"></span> Clear Nodes</button>
-        </div>
-    </div>
-    <div class="row">
-      <div id="tree-view-container" class="col-md-12">
-        <canvas id="tree-view">
-          <p> Canvas tag not supported </p>
-        </canvas>
+   <h1 class="title text-center">Binary search tree visualize</h1>
+   <div class="row">
+      <div class="col-md-12">
+         <div class="inputs">
+            <div class="form-group">
+               <input type="text" class="form-control" id="input-text" placeholder="Please input number of integer" />
+            </div>
+         </div>
+         <button id="insert-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-plus"></span> Insert</button>
+         <button id="search-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-search"></span> Search</button>
+         <button id="delete-btn" class="btn btn-primary btn-raised" title="Delete the node, then detach the max value of left childs"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+         <button id="clear-btn" class="btn btn-primary btn-raised"><span class="glyphicon glyphicon-erase"></span> Clear Nodes</button>
       </div>
-    </div>
+   </div>
+   <div class="row">
+      <div id="tree-view-container" class="col-md-12">
+         <canvas id="tree-view">
+            <p> Canvas tag not supported </p>
+         </canvas>
+      </div>
+   </div>
+   <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log(reg))
+            .catch(err => console.log(err));
+        }
+    </script>
 </body>
 
 </html>

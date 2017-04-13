@@ -34,10 +34,13 @@
         "style-loader": "~0.13.1",
         "url-loader": "~0.5.7",
         "webpack": "~2.2.1",
-        "webpack-dev-server": "~2.4.1"
+        "webpack-dev-server": "~2.4.1",
+        "sw-precache-webpack-plugin": "^0.9.1",
+        "express": "^4.15.2"
     },
     "scripts": {
         "release": "webpack",
-        "dev": "webpack-dev-server --inline --devtool eval --progress --colors --hot --content-base build"
+        "dev": "webpack-dev-server --inline --devtool eval --progress --colors --hot --content-base build",
+        "server": "node server.js"
     }
 }
