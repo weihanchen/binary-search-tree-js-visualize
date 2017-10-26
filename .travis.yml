@@ -5,9 +5,13 @@ script:
   # build
   - npm run release
 deploy:
-  provider: script
+  provider: pages
   skip_cleanup: true
-  script: bash scripts/deploy.sh
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+  local_dir: public
+  email: $GITHUB_MAIL
 
 branches:
   only:
